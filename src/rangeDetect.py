@@ -14,12 +14,13 @@ def compare(fire, user, thr, fp):
     thr = thr * thr
     ran = fire.shape[0]
     ran2 = user.shape[0]
-    for j in range(ran):
-        for i in range(ran2):
+    invited = np.zeros(ran2)
+    for i in range(ran2):
+        for j in range(ran):
             pos_fire = fire[j, 0:2]
-            pos_user = user[i, 1:3]
+            pos_user = user[i, 4:6]
             if(np.sum(np.square(pos_fire-pos_user)) < thr):
-                fp.write("{}\n".format(user[i,0]))
+                fp.write("{:d}.{:d}.{:d}.{:d}\n".format(int(user[i,0]),int(user[i,1]),int(user[i,2]),int(user[i,3])))
                 break
         
 
