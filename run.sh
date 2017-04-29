@@ -1,3 +1,3 @@
 #! /bin/bash
 
-python fireDataParser.py -o fireData.csv
+python src/fireDataParser.py -o data/fireData.csv
