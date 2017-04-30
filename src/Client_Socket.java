@@ -15,7 +15,7 @@ import android.os.Bundle;
 
 public class Client_Socket extends Activity {
 
-    private String myLocation;
+    private String myLocation = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,8 +24,7 @@ public class Client_Socket extends Activity {
         Bundle b = getIntent().getExtras();
         final double latitude  = b.getDouble("latitude");
         final double longitude = b.getDouble("longitude");
-
-
+        final int    phoneNum  = b.getInt("phoneNum");
 
         new Thread() {
             public void run() {
@@ -44,9 +43,8 @@ public class Client_Socket extends Activity {
 
                     // send data
                     DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-                    myLocation = new String();
-                    myLocation = "114.36.129.178,"+String.valueOf(latitude)+","+String.valueOf(longitude);
 
+                    myLocation += String.valueOf(phoneNum)+","+String.valueOf(latitude)+","+String.valueOf(longitude);
                     out.writeUTF(myLocation);
 
                     socket.close();
