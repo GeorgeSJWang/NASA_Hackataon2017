@@ -12,7 +12,7 @@ public class WriteData {
 	// constructor
 	public WriteData() {
 		try{
-	    	this.writer = new PrintWriter(new FileOutputStream(new File("userData.csv"), true)); 
+	    	this.writer = new PrintWriter(new FileOutputStream(new File("../data/userData.csv"), true)); 
 		}catch (IOException e) {
 			System.out.println("ERROR");
 		}
