@@ -7,6 +7,7 @@ import android.widget.Toast;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.location.Location;
+import android.telephony.TelephonyManager;
 import android.content.Context;
 
 public class MainActivity extends Activity {
@@ -33,6 +34,20 @@ public class MainActivity extends Activity {
         }
         */
 
+        String mPhoneNumber;
+
+        /* Get telephone number of itself
+        try {
+            TelephonyManager tMgr =(TelephonyManager)this.getSystemService(Context.TELEPHONY_SERVICE);
+            mPhoneNumber = tMgr.getLine1Number();
+        } catch (Exception e) {
+            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+        */
+
+        mPhoneNumber = "975738316";
+        int foo = Integer.parseInt(mPhoneNumber);
+
         double latitude  = 25.032969;
         double longitude = 121.565418;
 
@@ -40,7 +55,9 @@ public class MainActivity extends Activity {
             Intent myIntent = new Intent(MainActivity.this, Client_Socket.class);
             myIntent.putExtra("latitude",  latitude);
             myIntent.putExtra("longitude", longitude);
+            myIntent.putExtra("phoneNum",  foo);
             MainActivity.this.startActivity(myIntent);
+            Toast.makeText(MainActivity.this, "User location updated!", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
